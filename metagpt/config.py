@@ -13,9 +13,6 @@ from metagpt.const import PROJECT_ROOT
 from metagpt.logs import logger
 from metagpt.tools import SearchEngineType, WebBrowserEngineType
 from metagpt.utils.singleton import Singleton
-from dotenv import load_dotenv
-load_dotenv()
-apikey = os.getenv("OPENAI_API_KEY")
 
 class NotConfiguredException(Exception):
     """Exception raised for errors in the configuration.
