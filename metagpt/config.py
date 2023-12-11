@@ -7,6 +7,7 @@ import os
 
 import openai
 import yaml
+import streamlit as st
 
 from metagpt.const import PROJECT_ROOT
 from metagpt.logs import logger
@@ -45,7 +46,7 @@ class Config(metaclass=Singleton):
         self._init_with_config_files_and_env(self._configs, yaml_file)
         logger.info("Config loading done.")
         self.global_proxy = self._get("GLOBAL_PROXY")
-        self.openai_api_key = os.getenv("OPENAI_API_KEY")
+        self.openai_api_key = st.secrets["AIKEY"]
         self.anthropic_api_key = self._get("Anthropic_API_KEY")
         self.zhipuai_api_key = self._get("ZHIPUAI_API_KEY")
         if (not self.openai_api_key or "YOUR_API_KEY" == self.openai_api_key) and \
